@@ -10,7 +10,7 @@ module multiplier_8bit (
     // Internal wires to hold sums and carries
     wire [7:0] sum0, sum1, sum2, sum3;
     wire [7:0] sum4, sum5;
-    wire carry0, carry1, carry2, carry3, carry4, carry5; // Added carry5
+    wire carry0, carry1, carry2, carry3, carry4;  // Removed carry5
 
     // Generate partial products
     assign pp0 = (a & {8{b[0]}});     // Partial product for b[0]
@@ -29,7 +29,7 @@ module multiplier_8bit (
     full_adder_8bit adder3 (.a(pp6), .b(pp7), .cin(carry2), .sum(sum3), .cout(carry3));
 
     full_adder_8bit adder4 (.a(sum0), .b(sum1), .cin(carry3), .sum(sum4), .cout(carry4));
-    full_adder_8bit adder5 (.a(sum2), .b(sum3), .cin(carry4), .sum(sum5), .cout(carry5));  // Correctly connected cout pin
+    full_adder_8bit adder5 (.a(sum2), .b(sum3), .cin(carry4), .sum(sum5));  // Removed .cout(carry5)
 
     // Final sum gives the 8-bit product
     assign product = sum4 + sum5;  // Use only the lower 8 bits of the final result
