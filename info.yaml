@@ -21,35 +21,36 @@ project:
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
-  # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  # Inputs (Dedicated Inputs for CPU Control and Data)
+  ui[0]: "CPU Data Input (D0)"
+  ui[1]: "CPU Data Input (D1)"
+  ui[2]: "CPU Data Input (D2)"
+  ui[3]: "CPU Data Input (D3)"
+  ui[4]: "CPU Data Input (D4)"
+  ui[5]: "CPU Data Input (D5)"
+  ui[6]: "CPU Data Input (D6)"
+  ui[7]: "CPU Data Input (D7)"
 
-  # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  # Outputs (CPU Result Output)
+  uo[0]: "CPU Output (O0)"
+  uo[1]: "CPU Output (O1)"
+  uo[2]: "CPU Output (O2)"
+  uo[3]: "CPU Output (O3)"
+  uo[4]: "CPU Output (O4)"
+  uo[5]: "CPU Output (O5)"
+  uo[6]: "CPU Output (O6)"
+  uo[7]: "CPU Output (O7)"
 
-  # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
+  # Bidirectional pins (Control Signals for CPU: Address, Load, Instruction Select)
+  uio[0]: "CPU Load Address (A0)"
+  uio[1]: "CPU Load Address (A1)"
+  uio[2]: "CPU Load Address (A2)"
+  uio[3]: "CPU Load Address (A3)"
+  uio[4]: "CPU Load Address (A4)"
+  uio[5]: "CPU Load Signal"
+  uio[6]: "CPU Instruction/Data Select"
   uio[7]: ""
+
 
 # Do not change!
 yaml_version: 6
