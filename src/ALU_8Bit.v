@@ -18,6 +18,7 @@ module ALU_8Bit (
     wire [7:0] or_result_internal;  // OR operation result
     wire [7:0] multiply_result;    // Multiplication result
     wire [7:0] divide_result;      // Division result
+    wire [7:0] remainder;          // Remainder (if needed)
 
     // Instantiate Math_Unit_8Bit for addition and subtraction
     Math_Unit_8Bit math_unit (
@@ -43,7 +44,8 @@ module ALU_8Bit (
     divider_8bit div (
         .dividend(a),
         .divisor(b),
-        .quotient(divide_result)
+        .quotient(divide_result),
+        .remainder(remainder)  // Ensure remainder is properly connected
     );
 
     // 6-to-1 MUX to select between different operation results

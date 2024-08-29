@@ -58,7 +58,7 @@ module CPU (
         .clk(clk),
         .load(load),
         .is_instruction(is_instruction),  // Selector to differentiate between instruction and data
-        .load_address(load_address[3:0]),  // Use only lower 4 bits for load address
+        .load_address(load_address[3:0]), // Only 4 bits are used
         .cpu_input(cpu_input),
         .address(address),
         .data(data)
@@ -89,11 +89,7 @@ module CPU (
         .b(data),                     // Operand from the Data Register
         .sub(sub),
         .op_select(op_select),
-        .result(result),              // Output of the ALU
-        .cout(),                      // Carry out (not used)
-        .overflow(),                  // Overflow (not used)
-        .NO(),                        // Negative flag (not used)
-        .ZO()                         // Zero flag (not used)
+        .result(result)               // Output of the ALU
     );
 
     // Output Register (stores the value to be outputted)
