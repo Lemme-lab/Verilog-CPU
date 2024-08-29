@@ -1,6 +1,5 @@
 module Control_Unit (
-    input clk,
-    input [7:0] instruction,  // 8-bit instruction
+    input [7:0] instruction,  // 8-bit instruction (Removed unused clk)
     output reg sub,           // Subtraction signal for ALU
     output reg [2:0] op_select, // Operation select for ALU
     output reg write_enable,  // Write enable for Output Register

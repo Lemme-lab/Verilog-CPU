@@ -25,6 +25,8 @@ module tt_um_CPU_Lemme (
   wire [4:0] load_address = uio_in[4:0];  // Use lower 5 bits for load address
   wire load = uio_in[5];                  // Use bit 5 as the load signal
   wire is_instruction = uio_in[6];        // Use bit 6 to differentiate between instruction/data
+  // Handle unused bits to avoid warning
+  wire unused_uio_in7 = uio_in[7];        // Avoid warning for unused bit
 
   // CPU Instance
   CPU cpu_instance (
@@ -38,6 +40,7 @@ module tt_um_CPU_Lemme (
   );
 
   // All output pins must be assigned. If not used, assign to 0.
+  assign uio_out  = 8'b0;  // Assign to avoid undriven warning
   assign uio_oe  = 8'b0;
 
   // List all unused inputs to prevent warnings
