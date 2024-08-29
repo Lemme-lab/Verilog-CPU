@@ -24,7 +24,7 @@ module Math_Unit_8Bit (
         .b(b_xor),
         .cin(carry_in),
         .sum(sum),
-        .cout(cout)  // Connect cout pin
+        .cout(cout)  // Ensure cout is connected
     );
 
 endmodule
