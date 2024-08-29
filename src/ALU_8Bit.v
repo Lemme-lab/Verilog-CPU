@@ -10,29 +10,21 @@ module ALU_8Bit (
     input [7:0] b,           // Operand from Data Register
     input sub,               // Subtraction signal
     input [2:0] op_select,   // Operation select
-    output [7:0] result,     // Unified result output
-    output cout,             // Carry out for addition/subtraction (not used)
-    output overflow,         // Overflow flag (not used)
-    output NO,               // Negative flag (not used)
-    output ZO                // Zero flag (not used)
+    output [7:0] result      // Unified result output
 );
+
     wire [7:0] sum;               // Sum output from Math_Unit_8Bit
     wire [7:0] and_result_internal; // AND operation result
     wire [7:0] or_result_internal;  // OR operation result
     wire [7:0] multiply_result;    // Multiplication result
     wire [7:0] divide_result;      // Division result
-    wire overflow_arithmetic;       // Overflow detection for arithmetic operations
 
     // Instantiate Math_Unit_8Bit for addition and subtraction
     Math_Unit_8Bit math_unit (
         .a(a),
         .b(b),
         .sub(sub),
-        .sum(sum),
-        .cout(cout),
-        .overflow(overflow_arithmetic),
-        .NO(NO),
-        .ZO(ZO)
+        .sum(sum)
     );
 
     // 8-bit AND operation
@@ -51,8 +43,7 @@ module ALU_8Bit (
     divider_8bit div (
         .dividend(a),
         .divisor(b),
-        .quotient(divide_result),
-        .remainder() // Assume remainder is not needed for the final result
+        .quotient(divide_result)
     );
 
     // 6-to-1 MUX to select between different operation results
@@ -66,8 +57,4 @@ module ALU_8Bit (
         .sel(op_select),           // Operation select
         .out(result)               // Unified result output
     );
-
-    // Overflow detection (only for addition and subtraction)
-    assign overflow = (op_select == 3'b000 && overflow_arithmetic) || 
-                      (op_select == 3'b001 && overflow_arithmetic);
 endmodule
