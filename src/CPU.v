@@ -66,8 +66,7 @@ module CPU (
 
     // Control Unit (decodes the instruction and generates control signals for the ALU and Output Register)
     Control_Unit cu (
-        .clk(clk),
-        .instruction(instruction),
+        .instruction(instruction),  // Removed the erroneous clk connection
         .sub(sub),
         .op_select(op_select),
         .write_enable(write_enable),
