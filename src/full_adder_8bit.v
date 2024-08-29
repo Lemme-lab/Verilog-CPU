@@ -8,7 +8,7 @@ module full_adder_8bit (
     output cout        // Carry output from the most significant bit
 );
 
-    wire [7:0] carry;  // Intermediate carry signals
+    wire [6:0] carry;  // Intermediate carry signals (reduced to 6:0 to avoid circular logic)
 
     // Instantiate 8 1-bit full adders for each bit
     full_adder fa0 (.a(a[0]), .b(b[0]), .cin(cin),      .sum(sum[0]), .cout(carry[0]));
@@ -21,3 +21,4 @@ module full_adder_8bit (
     full_adder fa7 (.a(a[7]), .b(b[7]), .cin(carry[6]), .sum(sum[7]), .cout(cout)); // Most significant bit
 
 endmodule
+

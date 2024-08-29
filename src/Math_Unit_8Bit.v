@@ -10,6 +10,7 @@ module Math_Unit_8Bit (
 
     wire [7:0] b_xor;      // XOR-ed version of b (for subtraction)
     wire carry_in;         // Carry input to the adder
+    wire cout_unused;      // Unused cout wire
 
     // XOR b with the subtraction signal to handle both addition and subtraction
     assign b_xor = b ^ {8{sub}};
@@ -22,8 +23,8 @@ module Math_Unit_8Bit (
         .a(a),
         .b(b_xor),
         .cin(carry_in),
-        .sum(sum)
-        // Removed cout as it's not used
+        .sum(sum),
+        .cout(cout_unused)  // Connect to a wire to avoid PINMISSING warning
     );
 
 endmodule
