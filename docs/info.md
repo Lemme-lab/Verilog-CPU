@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+8-Bit CPU with Multiplication and Division ALU mostly build with NAND gates. 
 
 ## How to test
 
-Explain how to use your project
+See the Instruction Table below:
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Microcontroller or other Hardware to set Data and Instructions
