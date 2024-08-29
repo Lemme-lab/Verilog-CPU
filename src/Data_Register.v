@@ -11,13 +11,11 @@ module Data_Register (
 
     always @(posedge clk) begin
         if (load && !is_instruction) begin
-            // Load data into the specified address
-            memory[load_address[3:0]] <= cpu_input;
+            memory[load_address] <= cpu_input;
         end
     end
 
     always @(*) begin
-        // Fetch the data from the data memory
         data = memory[address];
     end
 endmodule

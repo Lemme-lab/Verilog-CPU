@@ -19,6 +19,8 @@ module Output_Register (
         if (read_enable) begin
             // Output the value stored in the specified index of the Output Register
             output_value = memory[output_index];
+        end else begin
+            output_value = 8'b0;  // Ensure output_value is always assigned
         end
     end
 endmodule

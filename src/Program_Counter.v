@@ -1,7 +1,7 @@
 module Program_Counter (
     input clk,
     input reset,
-    output reg [4:0] program_counter  // Changed to 5 bits
+    output reg [4:0] program_counter  // 5-bit program counter for 32 instructions
 );
     always @(posedge clk or posedge reset) begin
         if (reset)
@@ -10,4 +10,3 @@ module Program_Counter (
             program_counter <= program_counter + 1;  // Increment PC
     end
 endmodule
-

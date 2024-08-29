@@ -7,17 +7,15 @@ module Instruction_Register (
     input [4:0] program_counter,     // Current instruction address (5 bits now)
     output reg [7:0] instruction     // 8-bit instruction (Opcode + Operand Address)
 );
-    reg [7:0] instructions [31:0];  // 32 instructions, each 8 bits wide (changed to 32 locations)
+    reg [7:0] instructions [31:0];   // 32 instructions, each 8 bits wide
 
     always @(posedge clk) begin
         if (load && is_instruction) begin
-            // Load instruction into the specified address
             instructions[load_address] <= cpu_input;
         end
     end
 
     always @(*) begin
-        // Fetch the instruction from the instruction memory
         instruction = instructions[program_counter];
     end
 endmodule

@@ -1,8 +1,8 @@
 module Address_Register (
-    input [7:0] instruction,  // Changed from 16-bit to 8-bit
-    output reg [3:0] address  // Address for the operand
+    input [7:0] instruction,  // 8-bit instruction
+    output reg [3:0] address  // Address for the operand (lower 4 bits of the instruction)
 );
     always @(*) begin
-        address = instruction[3:0];  // Extract address for operand from the lower 4 bits
+        address = instruction[3:0];
     end
 endmodule

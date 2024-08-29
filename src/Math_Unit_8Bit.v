@@ -2,18 +2,19 @@
 `include "or8_8bit.v"
 
 module Math_Unit_8Bit (
-    input [7:0] a,    // First 8-bit input
-    input [7:0] b,    // Second 8-bit input
-    input sub,        // Subtract control signal (1 for subtraction, 0 for addition)
-    output [7:0] sum, // 8-bit sum output
-    output cout,      // Carry output from the most significant bit
-    output overflow,  // Overflow detection
-    output NO,        // Negative Out
-    output ZO         // Zero Out
+    input [7:0] a,     // First 8-bit input
+    input [7:0] b,     // Second 8-bit input
+    input sub,         // Subtract control signal (1 for subtraction, 0 for addition)
+    output [7:0] sum,  // 8-bit sum output
+    output cout,       // Carry output from the most significant bit
+    output overflow,   // Overflow detection
+    output NO,         // Negative Out
+    output ZO          // Zero Out
 );
-    wire [7:0] b_xor; // XOR-ed version of b (for subtraction)
-    wire carry_in;    // Carry input to the adder
-    wire or_result;   // Result of OR reduction
+
+    wire [7:0] b_xor;      // XOR-ed version of b (for subtraction)
+    wire carry_in;         // Carry input to the adder
+    wire [7:0] or_result_internal;  // 8-bit internal wire to match the output size of or8_8bit
 
     // XOR b with the subtraction signal to handle both addition and subtraction
     assign b_xor = b ^ {8{sub}};
@@ -40,8 +41,9 @@ module Math_Unit_8Bit (
     // Zero Out (ZO): High if all bits in the result are 0
     or8_8bit orGate (
         .a(sum),
-        .y(or_result)
+        .y(or_result_internal)  // Connect to 8-bit wire
     );
-    
-    assign ZO = ~or_result;
+
+    assign ZO = ~|or_result_internal;  // Perform reduction OR operation on the 8-bit wire
+
 endmodule

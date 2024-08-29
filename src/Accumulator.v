@@ -11,4 +11,3 @@ module Accumulator (
             acc_value <= alu_result; // Store ALU result in the accumulator
     end
 endmodule
-
