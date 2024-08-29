@@ -1,3 +1,12 @@
+`include "ALU_8Bit.v"
+`include "Accumulator.v"
+`include "Address_Register.v"
+`include "Control_Unit.v"
+`include "Data_Register.v"
+`include "Instruction_Register.v"
+`include "Output_Register.v"
+`include "Program_Counter.v"
+
 module CPU (
     input clk,
     input reset,
@@ -46,14 +55,14 @@ module CPU (
 
     // Data Register (fetches data based on the address provided by the instruction)
     Data_Register dr (
-        .clk(clk),
-        .load(load),
-        .is_instruction(is_instruction),  // Selector to differentiate between instruction and data
-        .load_address(load_address),
-        .cpu_input(cpu_input),
-        .address(address),
-        .data(data)
-    );
+    .clk(clk),
+    .load(load),
+    .is_instruction(is_instruction),  // Selector to differentiate between instruction and data
+    .load_address(load_address[3:0]),  // Use only lower 4 bits for load address
+    .cpu_input(cpu_input),
+    .address(address),
+    .data(data)
+);
 
     // Control Unit (decodes the instruction and generates control signals for the ALU and Output Register)
     Control_Unit cu (

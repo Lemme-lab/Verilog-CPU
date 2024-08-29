@@ -1,3 +1,6 @@
+`include "full_adder_8bit.v"
+`include "or8_8bit.v"
+
 module Math_Unit_8Bit (
     input [7:0] a,    // First 8-bit input
     input [7:0] b,    // Second 8-bit input

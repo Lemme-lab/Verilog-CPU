@@ -1,9 +1,8 @@
-module or8_8bit (
-    input [7:0] a,  // 8-bit input
-    output y        // 1-bit output
+module or_8bit (
+    input [7:0] a,   // First 8-bit input
+    input [7:0] b,   // Second 8-bit input
+    output [7:0] y   // 8-bit output
 );
-
-    // Perform bitwise OR operation across all bits of the input using a reduction operator
-    assign y = |a;  // Reduction OR operator: outputs 1 if any bit in 'a' is 1, otherwise 0
-
+    assign y = a | b; // Perform bitwise OR operation
 endmodule
+

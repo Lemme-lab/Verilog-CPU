@@ -1,3 +1,5 @@
+`include "full_adder.v"
+
 module full_adder_8bit (
     input [7:0] a,     // First 8-bit input
     input [7:0] b,     // Second 8-bit input

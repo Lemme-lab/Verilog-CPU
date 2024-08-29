@@ -1,3 +1,10 @@
+`include "Math_Unit_8Bit.v"
+`include "and8_8bit.v"
+`include "divider_8bit_gate.v"
+`include "multiplier_8bit_gate.v"
+`include "mux6to1_8bit.v"
+`include "or_8bit.v"
+
 module ALU_8Bit (
     input [7:0] a,            // Operand from Accumulator
     input [7:0] b,            // Operand from Data Register
